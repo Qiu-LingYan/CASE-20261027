@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE-20261027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414; --sub:#6b6b6b; --line:#e8e6e1; --accent:#b91c1c;
+  --bg:#ffffff; --soft:#faf9f7; --serif:'Noto Serif SC',serif; --sans:'Inter','Noto Serif SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+/* top bar */
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.case-id{font-family:var(--sans);font-weight:600;letter-spacing:.14em;font-size:13px}
+.case-id span{color:var(--accent)}
+nav{display:flex;gap:28px;font-size:13px;color:var(--sub)}
+nav a{text-decoration:none;transition:color .2s}
+nav a:hover{color:var(--ink)}
+#langBtn{border:1px solid var(--line);background:transparent;font-family:var(--sans);font-size:12px;padding:6px 14px;cursor:pointer;border-radius:999px;color:var(--sub);transition:all .2s}
+#langBtn:hover{color:var(--ink);border-color:var(--ink)}
+
+/* hero */
+.hero{padding:110px 0 80px;text-align:center}
+.hero .file-no{font-size:12px;letter-spacing:.35em;color:var(--accent);font-weight:600;margin-bottom:28px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,6vw,58px);line-height:1.25;letter-spacing:.02em}
+.hero .sub{margin-top:26px;color:var(--sub);font-size:15px;max-width:520px;margin-left:auto;margin-right:auto}
+.hero .meta{margin-top:44px;display:flex;justify-content:center;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hero .meta div{padding:16px 34px;font-size:12px;color:var(--sub)}
+.hero .meta div+div{border-left:1px solid var(--line)}
+.hero .meta b{display:block;font-size:14px;color:var(--ink);font-weight:600;margin-bottom:2px}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+.eyebrow{font-size:11px;letter-spacing:.3em;color:var(--accent);font-weight:600;margin-bottom:18px}
+h2{font-family:var(--serif);font-size:28px;font-weight:600;margin-bottom:28px}
+p.lead{color:#333;font-size:15.5px}
+.quote{margin:32px 0;padding:26px 30px;background:var(--soft);border-left:3px solid var(--accent);font-family:var(--serif);font-size:16px;line-height:2}
+.quote .note{display:block;margin-top:12px;font-family:var(--sans);font-size:12.5px;color:var(--sub)}
+
+/* timeline */
+.tl{margin-top:8px}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.tl-item:last-child{border-bottom:none}
+.tl-time{font-size:13px;color:var(--accent);font-weight:600;padding-top:3px}
+.tl-body b{display:block;font-weight:600;margin-bottom:6px;font-size:15px}
+.tl-body p{font-size:14.5px;color:#444}
+
+/* disputes */
+.dispute{padding:24px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:44px 1fr;gap:18px}
+.dispute:last-child{border-bottom:none}
+.dispute .no{font-family:var(--serif);font-size:26px;color:var(--line);font-weight:900;line-height:1}
+.dispute b{display:block;font-size:15px;margin-bottom:4px}
+.dispute p{font-size:14.5px;color:#444}
+
+/* evidence */
+.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.ev{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff;transition:box-shadow .25s}
+.ev:hover{box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.ev .cap{padding:14px 16px;font-size:13px;border-top:1px solid var(--line)}
+.ev .cap small{display:block;color:var(--sub);margin-top:2px;font-size:11.5px}
+.ev img{width:100%;display:block;height:300px;object-fit:cover;object-position:top}
+.ev.full{grid-column:1/-1}
+.ev.full img{height:420px;object-position:top}
+
+/* documents */
+.doc-list a{display:flex;justify-content:space-between;align-items:center;padding:20px 4px;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .2s}
+.doc-list a:hover{padding-left:12px}
+.doc-list .name{font-weight:600;font-size:15px}
+.doc-list .name small{display:block;font-weight:400;color:var(--sub);font-size:12.5px;margin-top:2px}
+.doc-list .arrow{color:var(--sub)}
+
+/* provenance */
+.prov{background:var(--soft)}
+.prov p{font-size:14.5px;color:#444;margin-bottom:10px}
+.prov a{color:var(--accent)}
+
+footer{padding:44px 0;text-align:center;font-size:12px;color:var(--sub);border-top:1px solid var(--line)}
+footer .fin{font-family:var(--serif);font-size:15px;color:var(--ink);margin-bottom:8px}
+
+@media(max-width:640px){
+  nav{display:none}
+  .tl-item{grid-template-columns:1fr;gap:6px}
+  .ev-grid{grid-template-columns:1fr}
+  .hero .meta{flex-direction:column}
+  .hero .meta div+div{border-left:none;border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <div class="case-id">CASE<span>—</span>20261027</div>
+    <nav>
+      <a href="#background" data-i18n="nav_bg">背景</a>
+      <a href="#timeline" data-i18n="nav_tl">经过</a>
+      <a href="#disputes" data-i18n="nav_dp">争议</a>
+      <a href="#evidence" data-i18n="nav_ev">证据</a>
+      <a href="#documents" data-i18n="nav_doc">文档</a>
+      <a href="https://github.com/Qiu-LingYan/CASE-20261027" target="_blank">GitHub ↗</a>
+    </nav>
+    <button id="langBtn">EN</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" style="border-top:none">
+  <div class="wrap">
+    <div class="file-no" data-i18n="hero_file">CASE FILE · 公开档案</div>
+    <h1 data-i18n="hero_h1">十月二十七日<br>课堂公开贬损事件</h1>
+    <p class="sub" data-i18n="hero_sub">本页为事件当事人对 2026 年 10 月 27 日班主任曾青秀在课堂上当众言语侮辱、变相公开学生身份事件的个人公开记录，含事件经过与全部证据。</p>
+    <div class="meta">
+      <div><b data-i18n="m_date_l">事发日期</b><span data-i18n="m_date">2026.10.27</span></div>
+      <div><b data-i18n="m_place_l">地点</b><span data-i18n="m_place">课堂 · 全班同学在场</span></div>
+      <div><b data-i18n="m_st_l">性质</b><span data-i18n="m_st">公开记录 · 永久存档</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="background">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s1_e">SECTION 01 — BACKGROUND</div>
+    <h2 data-i18n="s1_h">背景情况</h2>
+    <p class="lead" data-i18n="s1_p1">本人患有严重的过敏性鼻炎。本学期前两节游泳课后，本人均在当天下午出现急性鼻炎发作，身体极度不适（有医院过敏源检测报告为证，户尘螨 / 粉尘螨特异性 IgE 达 34.10 / 39.10 KUA/L，参考上限 0.35）。为避免反复发作，自第三次游泳课起，本人按规定履行请假手续。</p>
+    <p class="lead" style="margin-top:14px" data-i18n="s1_p2">本校游泳课师生比为 1 名教师对 54 名学生，且现场不设救生员。涉事教师为班主任曾青秀。</p>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s2_e">SECTION 02 — INCIDENT</div>
+    <h2 data-i18n="s2_h">事件经过 · 11:10–11:15</h2>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-time" data-i18n="t1_t">当众发言</div>
+        <div class="tl-body">
+          <b data-i18n="t1_b">言语嘲讽</b>
+          <p data-i18n="t1_p">班主任曾青秀在课堂上，当着全班同学的面发表带有性别羞辱意味的言论，讽刺本人因身体原因反复请游泳课假，并使用"男生经期比女生还长"等原话（本人愿对还原真实性承担法律责任）。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time" data-i18n="t2_t">读书期间</div>
+        <div class="tl-body">
+          <b data-i18n="t2_b">座位旁质问 · 变相公开身份</b>
+          <p data-i18n="t2_p">发言结束后，该教师让全班朗读课本。期间她特意走到本人座位旁质问为何每次请假。本人回答因鼻炎严重、每次游完泳下午均发作。她未等本人说完便打断，回应"那就是免疫力低下"——此前她从未私下或向家长核实过本人的身体状况。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time" data-i18n="t3_t">随后</div>
+        <div class="tl-body">
+          <b data-i18n="t3_b">引发同学公开嘲笑</b>
+          <p data-i18n="t3_p">由于多次请假且教师特意走到本人座位处质问，全班同学明确知晓嘲讽对象是本人。在上述不当言论后，有同学对本人喊"来大姨夫了"，周围一群同学哄堂大笑。该教师的不当言辞直接引发了针对本人的公开嘲笑。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="disputes">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s3_e">SECTION 03 — CORE DISPUTES</div>
+    <h2 data-i18n="s3_h">核心争议点</h2>
+    <div class="dispute">
+      <div class="no">01</div>
+      <div><b data-i18n="d1_b">违反师德师风</b><p data-i18n="d1_p">在未向本人及家长核实具体身体状况的情况下，在公开场合使用带有性别羞辱意味的言辞贬损学生。</p></div>
+    </div>
+    <div class="dispute">
+      <div class="no">02</div>
+      <div><b data-i18n="d2_b">无视教学安全</b><p data-i18n="d2_p">在 1:54 且无救生员的游泳课配置下，本人因身体原因请假是对自身安全负责。教师不仅不体谅，反而当众施压。</p></div>
+    </div>
+    <div class="dispute">
+      <div class="no">03</div>
+      <div><b data-i18n="d3_b">引发不良后果</b><p data-i18n="d3_p">教师的不当言辞直接导致同学对本人进行言语嘲笑，破坏了本人的正常学习环境和心理健康。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s4_e">SECTION 04 — EVIDENCE</div>
+    <h2 data-i18n="s4_h">证据</h2>
+    <div class="ev-grid">
+      <figure class="ev">
+        <img src="IMG_0561.png" alt="事发当天聊天记录">
+        <figcaption class="cap" data-i18n="ev1">事发当天中午（13:00）向同学倾诉的聊天记录截图</figcaption>
+      </figure>
+      <figure class="ev">
+        <img src="IMG_0569.jpeg" alt="事发当天朋友圈">
+        <figcaption class="cap" data-i18n="ev2">事发当天发布的朋友圈记录截图</figcaption>
+      </figure>
+      <figure class="ev full">
+        <img src="allergy-report-20260723.png" alt="过敏源检测报告">
+        <figcaption class="cap" data-i18n="ev3">医院出具的《过敏源检测报告》（2026-07-23）：户尘螨 d1 IgE 34.10 KUA/L、粉尘螨 d2 IgE 39.10 KUA/L，均显著高于参考上限 0.35 —— 请假理由的医学证明</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="documents">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s5_e">SECTION 05 — DOCUMENTS</div>
+    <h2 data-i18n="s5_h">原始文档</h2>
+    <div class="doc-list">
+      <a href="https://github.com/Qiu-LingYan/CASE-20261027/blob/main/20261027.md" target="_blank">
+        <span class="name">20261027.md<small data-i18n="doc1_s">事件的客观结构化记录（Written By ChatGPT）</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a href="https://github.com/Qiu-LingYan/CASE-20261027/blob/main/20261028.md" target="_blank">
+        <span class="name">20261028.md<small data-i18n="doc2_s">事件经过的口述式记录</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a href="https://github.com/Qiu-LingYan/CASE-20261027/blob/main/experience.md" target="_blank">
+        <span class="name">experience.md<small data-i18n="doc3_s">个人经历（含本事件后续感想，2026.10.31 补）</small></span>
+        <span class="arrow">↗</span>
+      </a>
+      <a href="https://github.com/Qiu-LingYan/CASE-20261027" target="_blank">
+        <span class="name">GitHub · Qiu-LingYan/CASE-20261027<small data-i18n="doc4_s">本档案的原仓库</small></span>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="prov">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="s6_e">SECTION 06 — PROVENANCE</div>
+    <h2 data-i18n="s6_h">出处与说明</h2>
+    <p data-i18n="p1">事件记录与图片原文出自 <a href="https://github.com/Qiu-LingYan/daily" target="_blank">Qiu-LingYan/daily</a>；experience.md 出自 <a href="https://github.com/Qiu-LingYan/Qiu-LingYan" target="_blank">Qiu-LingYan/Qiu-LingYan</a>。</p>
+    <p data-i18n="p2">部分内容由 GPT-6-Sol 整理。页面内容仅为当事人个人记录与陈述。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fin" data-i18n="fin">真相不需要修饰。</div>
+  <div data-i18n="foot">CASE-20261027 · 公开档案 · 永久存档</div>
+</footer>
+
+<script>
+const I18N = {
+  zh: {},
+  en: {
+    nav_bg:"Background", nav_tl:"Incident", nav_dp:"Disputes", nav_ev:"Evidence", nav_doc:"Documents",
+    hero_file:"CASE FILE · PUBLIC RECORD",
+    hero_h1:"October 27<br>The Classroom Incident",
+    hero_sub:"A first-person public record of the incident on October 27, 2026, in which my homeroom teacher publicly humiliated me in front of the entire class and effectively disclosed my identity, including the full account and all evidence.",
+    m_date_l:"Date", m_date:"2026.10.27", m_place_l:"Location", m_place:"Classroom · In front of the class", m_st_l:"Nature", m_st:"Public record · Permanent archive",
+    s1_e:"SECTION 01 — BACKGROUND", s1_h:"Background",
+    s1_p1:"I suffer from severe allergic rhinitis. After each of the first two swimming lessons this semester, I suffered an acute flare-up that same afternoon (as evidenced by my hospital allergen test report: house dust mite d1 / dust mite d2 specific IgE at 34.10 / 39.10 KUA/L, reference limit 0.35). To avoid repeated flare-ups, I followed the proper procedure and requested leave from the third lesson onward.",
+    s1_p2:"The school's swimming class has a teacher-to-student ratio of 1:54 with no lifeguard on site. The teacher involved is my homeroom teacher, Zeng Qingxiu.",
+    s2_e:"SECTION 02 — INCIDENT", s2_h:"The Incident · 11:10–11:15",
+    t1_t:"Public address", t1_b:"Verbal mockery",
+    t1_p:"In class, in front of the entire class, my homeroom teacher Zeng Qingxiu made remarks of a sexually degrading nature, mocking my repeated medical leave from swimming lessons, including the exact words 'a boy's period lasts even longer than a girl's' (I am willing to bear legal responsibility for the accuracy of this reconstruction).",
+    t2_t:"During reading", t2_b:"Questioning at my seat · De facto disclosure of identity",
+    t2_p:"After the address, she had the class read from the textbook. During reading, she deliberately walked to my seat and questioned why I kept taking leave. I explained that my rhinitis was severe and flared up every afternoon after swimming. She interrupted me before I finished and replied, 'That means your immunity is low' — she had never checked on my condition with me or my parents beforehand.",
+    t3_t:"Afterwards", t3_b:"Public mockery by classmates",
+    t3_p:"Because of my repeated leaves and her deliberately coming to my seat, the whole class knew exactly whom she was mocking. After her remarks, a classmate shouted 'he got his period' at me and a group of classmates burst into laughter. Her inappropriate words directly triggered this public mockery.",
+    s3_e:"SECTION 03 — CORE DISPUTES", s3_h:"Core Disputes",
+    d1_b:"Violation of teacher ethics",
+    d1_p:"Without verifying my condition with me or my parents, she used sexually degrading language against a student in a public setting.",
+    d2_b:"Disregard for teaching safety",
+    d2_p:"With a 1:54 ratio and no lifeguard, taking leave for health reasons was an act of self-protection. Instead of understanding, the teacher applied public pressure.",
+    d3_b:"Harmful consequences",
+    d3_p:"The teacher's inappropriate words directly led to verbal mockery by classmates, damaging my learning environment and mental health.",
+    s4_e:"SECTION 04 — EVIDENCE", s4_h:"Evidence",
+    ev1:"Screenshot of chat logs in which I confided in a classmate that noon (13:00)",
+    ev2:"Screenshot of my WeChat Moments post made that day",
+    ev3:"Hospital allergen test report (2026-07-23): house dust mite d1 IgE 34.10 KUA/L, dust mite d2 IgE 39.10 KUA/L — both far above the 0.35 reference limit. Medical proof of my reason for taking leave.",
+    s5_e:"SECTION 05 — DOCUMENTS", s5_h:"Original Documents",
+    doc1_s:"Structured, objective record of the incident (Written By ChatGPT, in Chinese)",
+    doc2_s:"First-person narrative account of the incident (in Chinese)",
+    doc3_s:"My personal experience, including reflections after the incident (in Chinese)",
+    doc4_s:"The original repository of this case file",
+    s6_e:"SECTION 06 — PROVENANCE", s6_h:"Provenance & Note",
+    p1:"The incident reports and images originate from <a href='https://github.com/Qiu-LingYan/daily' target='_blank'>Qiu-LingYan/daily</a>; experience.md originates from <a href='https://github.com/Qiu-LingYan/Qiu-LingYan' target='_blank'>Qiu-LingYan/Qiu-LingYan</a>.",
+    p2:"Part of the content was compiled and organized by GPT-6-Sol. This page represents the personal record and statement of the person concerned.",
+    fin:"The truth needs no embellishment.",
+    foot:"CASE-20261027 · Public Record · Permanent Archive"
+  }
+};
+let lang = localStorage.getItem('case-lang') || 'zh';
+function apply(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v = I18N[lang][el.dataset.i18n];
+    if(v!==undefined) el.innerHTML = v;
+  });
+  document.documentElement.lang = lang==='zh'?'zh-CN':'en';
+  document.getElementById('langBtn').textContent = lang==='zh'?'EN':'中文';
+  localStorage.setItem('case-lang', lang);
+}
+document.getElementById('langBtn').onclick=()=>{lang=lang==='zh'?'en':'zh';apply();};
+apply();
+</script>
+</body>
+</html>
