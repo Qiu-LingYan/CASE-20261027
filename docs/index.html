@@ -287,6 +287,8 @@ const I18N = {
   }
 };
 let lang = localStorage.getItem('case-lang') || 'zh';
+// snapshot original zh text so switching back works
+document.querySelectorAll('[data-i18n]').forEach(el=>{ I18N.zh[el.dataset.i18n] = el.innerHTML; });
 function apply(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const v = I18N[lang][el.dataset.i18n];
