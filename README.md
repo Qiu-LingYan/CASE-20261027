@@ -2,7 +2,7 @@
 
 **[中文版说明（README.zh-CN.md）](README.zh-CN.md)**
 
-This repository is my personal, public and permanent record of the incident that took place on **October 27, 2026**, in which my homeroom teacher, **Zeng Qingxiu**, publicly humiliated me in front of the entire class — including remarks of a sexually degrading nature — and, by questioning me at my seat, effectively disclosed my identity to the whole class.
+This repository is my personal, public and permanent record of the incident that took place on **October 27, 2026**, in which my homeroom teacher (surname Zeng) publicly humiliated me in front of the entire class — including remarks of a sexually degrading nature — and, by questioning me at my seat, effectively disclosed my identity to the whole class.
 
 ## Contents
 
