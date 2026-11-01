@@ -8,15 +8,11 @@
 
 - [20261027.md](20261027.md) — 事件的客观结构化记录（Written By ChatGPT）
 - [20261028.md](20261028.md) — 事件经过的口述式记录
-- [experience.md](experience.md) — 个人经历（含本事件后续感想，2026.10.31 补）
 - [assets/](assets/) — 证据图片：当天聊天记录、朋友圈截图、医院过敏源检测报告
 
 ## 出处
 
-以上文件原文分别来自本人名下的原仓库：
-
-- 事件记录与图片：[Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
-- experience.md：[Qiu-LingYan/Qiu-LingYan](https://github.com/Qiu-LingYan/Qiu-LingYan)
+以上文件原文出自本人名下的原仓库：[Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
 
 ## 说明
 

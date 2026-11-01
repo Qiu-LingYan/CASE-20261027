@@ -8,15 +8,11 @@ This repository is my personal, public and permanent record of the incident that
 
 - [20261027.md](20261027.md) — Structured, objective record of the incident (Written By ChatGPT) *(in Chinese)*
 - [20261028.md](20261028.md) — First-person narrative account of the incident *(in Chinese)*
-- [experience.md](experience.md) — My personal experience, including reflections written after the incident (updated 2026.10.31) *(in Chinese)*
 - [assets/](assets/) — Evidence images: chat logs from that day, my WeChat Moments post, and my hospital allergy test report
 
 ## Provenance
 
-The original files come from my own repositories:
-
-- Incident reports and images: [Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
-- experience.md: [Qiu-LingYan/Qiu-LingYan](https://github.com/Qiu-LingYan/Qiu-LingYan)
+The original files come from my own repository: [Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
 
 ## Note
 
