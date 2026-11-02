@@ -13,7 +13,3 @@
 ## 出处
 
 以上文件原文出自本人名下的原仓库：[Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
-
-## 说明
-
-部分内容由 GPT-6-Sol 整理。

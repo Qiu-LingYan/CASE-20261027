@@ -13,7 +13,3 @@ This repository is my personal, public and permanent record of the incident that
 ## Provenance
 
 The original files come from my own repository: [Qiu-LingYan/daily](https://github.com/Qiu-LingYan/daily)
-
-## Note
-
-Part of the content was compiled and organized by GPT-6-Sol.
